@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-    tage("docker push") {
+    stage("docker push") {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
