@@ -15,8 +15,26 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
-                  sh 'docker build . '
+                  sh 'docker build -t sheroukhov/mgf_app:latest . '
                 }
+            }
+        }
+    stage("docker login") {
+            steps {
+                echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_sheroukhov', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                    docker login -u $USERNAME -p $PASSWORD
+                    """
+                }
+            }
+        }
+    tage("docker push") {
+            steps {
+                echo " ============== start pushing image =================="
+                sh '''
+                docker push sheroukhov/mgf_app:latest
+                '''
             }
         }
     }
