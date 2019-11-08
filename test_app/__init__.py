@@ -2,7 +2,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
+# @app.route('/')
+# def index():
+    # return '<div align=center><h1>Hello, World!</h1></div>'
 
-def index():
-    return '<h1>Hello, World!</h1>'
+from test_app.core.views import core
+app.register_blueprint(core)
