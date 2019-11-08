@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
-                  sh 'docker build -t sheroukhov/mgf_app:latest . '
+                  sh 'docker build --no-cache -t sheroukhov/mgf_app:latest . '
                 }
             }
         }
