@@ -1,10 +1,9 @@
+import os
 from flask import Flask
 
-app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-# @app.route('/')
-# def index():
-    # return '<div align=center><h1>Hello, World!</h1></div>'
+app = Flask(__name__,  static_url_path=f'/{basedir}/static')
 
 from test_app.core.views import core
 app.register_blueprint(core)
