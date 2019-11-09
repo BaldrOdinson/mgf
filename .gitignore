@@ -1,3 +1,6 @@
 megafonenv/
 **/__pycache__
+test_app/static/*
+static/*
+!static/
 
