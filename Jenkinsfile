@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo " ============== update build number in file =================="
                     sh '''
-                      echo "${BUILD_NUMBER} > /home/ubuntu/build_no.txt"
+                      echo "${BUILD_NUMBER} > /home/jenkins/build_no.txt"
                     '''
             }
         }
