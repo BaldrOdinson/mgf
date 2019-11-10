@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo " ============== update build number in file =================="
                     sh '''
-                      export BLD_NUMBER  = "${BUILD_NUMBER}"
+                      export BLD_NUMBER="${BUILD_NUMBER}"
                     '''
 
             }
