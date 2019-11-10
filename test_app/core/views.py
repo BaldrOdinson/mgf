@@ -21,10 +21,6 @@ def load_num():
 def build_num():
     with open (os.path.join(basedir, 'build_info/build_no.txt'), 'r') as cur_num:
         bdl_num = cur_num.readline()
-    with open (os.path.join(basedir, 'build_info/build_no.txt'), 'w') as cur_num:
-        if bdl_num == '':
-            bdl_num = '1'
-            cur_num.write(bdl_num)
     return bdl_num
 
 @core.route('/')
