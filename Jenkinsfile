@@ -16,7 +16,7 @@ pipeline {
                 echo " ============== update build number in file =================="
                 dir ('test_app/core/build_info') {
                     sh """
-                    echo "Build number: ${BUILD_NUMBER}" > build_no.txt
+                    echo Build number: ${BUILD_NUMBER} > build_no.txt
                     """
                 }
             }
