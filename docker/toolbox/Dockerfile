@@ -5,11 +5,12 @@ RUN apt-get update && \
     useradd megafon && \
     usermod -aG sudo megafon
 #    echo megafon:megafon1 | chpasswd && \
-#    git clone https://github.com/BaldrOdinson/mgf.git /home/megafon/mgf
+    git clone https://github.com/BaldrOdinson/mgf.git /home/megafon/mgf
 
 
 # устанавливаем модули Python
 RUN pip3 install --no-cache-dir -r /home/megafon/mgf/requirements.txt && \
+    echo ${BLD_NUMBER} > /home/megafon/mgf/test_app/core/build_info/build_no.txt && \
     export LC_ALL=C.UTF-8 && \
     export LANG=C.UTF-8
 

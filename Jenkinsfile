@@ -14,10 +14,8 @@ pipeline {
         stage("update jenkins build info for html") {
             steps {
                 echo " ============== update build number in file =================="
-                dir ('test_app/core/build_info') {
-                    sh "echo Build number: ${BUILD_NUMBER} > build_no.txt"
-                    sh "pwd"
-                    sh "cat build_no.txt"
+                    sh "export BLD_NUMBER=${BUILD_NUMBER}"
+                    sh "echo Nem build var ${BLD_NUMBER}"
                 }
             }
         }
