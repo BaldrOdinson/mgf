@@ -3,7 +3,7 @@ FROM python:3.8
 RUN apt-get update && \
     # добавляем пользователя megafon
     useradd megafon && \
-    usermod -aG sudo megafon
+    usermod -aG sudo megafon && \
 #    echo megafon:megafon1 | chpasswd && \
     git clone https://github.com/BaldrOdinson/mgf.git /home/megafon/mgf
 
