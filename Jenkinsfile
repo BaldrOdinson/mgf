@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo " ============== update build number in file =================="
                     script {
-                        env.BLD_NUMBER  = "${BUILD_NUMBER}"
+                        export env.BLD_NUMBER  = "${BUILD_NUMBER}"
                     }
                     echo "New bld_no: '${BLD_NUMBER}'"
 
