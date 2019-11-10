@@ -2,6 +2,7 @@ import os
 from flask import render_template, request, redirect, url_for, Blueprint
 from time import gmtime, strftime
 
+basedir = os.path.abspath(os.path.dirname(__file__))
 core = Blueprint('core', __name__, template_folder='templates/core')
 
 def load_num():
@@ -18,9 +19,9 @@ def load_num():
     return c_num
 
 def build_num():
-    with open (url_for('static', filename = 'build_info/build_no.txt'), 'r') as cur_num:
+    with open (os.path.join(basedir, 'build_info/build_no.txt'), 'r') as cur_num:
         bdl_num = cur_num.readline()
-    with open (url_for('static', filename = 'build_info/build_no.txt'), 'w') as cur_num:
+    with open (os.path.join(basedir, 'build_info/build_no.txt'), 'w') as cur_num:
         if bdl_num == '':
             bdl_num = '1'
             cur_num.write(bdl_num)
