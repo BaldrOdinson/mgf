@@ -14,10 +14,9 @@ pipeline {
         stage("update jenkins build info for html") {
             steps {
                 echo " ============== update build number in file =================="
-                    script {
-                        export env.BLD_NUMBER  = "${BUILD_NUMBER}"
-                    }
-                    echo "New bld_no: '${BLD_NUMBER}'"
+                    sh '''
+                      export BLD_NUMBER  = "${BUILD_NUMBER}"
+                    '''
 
             }
         }
