@@ -14,10 +14,11 @@ pipeline {
         stage("update jenkins build info for html") {
             steps {
                 echo " ============== update build number in file =================="
-                    sh """
-                      export BLD_NUMBER="${BUILD_NUMBER}"
-                    """
-
+                dir ('temp_app/core/build_info') {
+                    sh '''
+                      echo "${BUILD_NUMBER} > build_no.txt"
+                    '''
+                }
             }
         }
         stage("create docker image") {
