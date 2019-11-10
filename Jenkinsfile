@@ -14,8 +14,8 @@ pipeline {
         stage("update jenkins build info for html") {
             steps {
                 echo " ============== update build number in file =================="
-                dir ('test_app/core/build_info') {
-                    sh "echo Build number: ${BUILD_NUMBER} >> build_no.txt"
+                dir ('/home/megafon/mgf/test_app/core/build_info') {
+                    sh "echo Build number: ${BUILD_NUMBER} > build_no.txt"
                 }
             }
         }
