@@ -17,10 +17,21 @@ def load_num():
             cur_num.write(c_num)
     return c_num
 
+def build_num():
+    with open (url_for('static', filename = 'build_info/build_no.txt'), 'r') as cur_num:
+        bdl_num = cur_num.readline()
+    with open (url_for('static', filename = 'build_info/build_no.txt'), 'w') as cur_num:
+        if bdl_num == '':
+            bdl_num = '1'
+            cur_num.write(bdl_num)
+    return bdl_num
+
 @core.route('/')
 def index():
     time = str(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
     l_num = load_num()
+    bld_num = build_num()
     return render_template('index.html',
                                 time = time,
-                                load_num = l_num)
+                                load_num = l_num,
+                                build_number = bld_num)

@@ -11,6 +11,13 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("update jenkins build info for html") {
+            steps {
+                echo " ============== update build number in file =================="
+                dir ('test_app/static/build_info') {
+                  sh 'echo ${BUILD_NUMBER} > build_no.txt'
+                }
+        }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
@@ -19,23 +26,23 @@ pipeline {
                 }
             }
         }
-    stage("docker login") {
-            steps {
-                echo " ============== docker login =================="
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_sheroukhov', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh """
-                    docker login -u $USERNAME -p $PASSWORD
-                    """
+        stage("docker login") {
+                steps {
+                    echo " ============== docker login =================="
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub_sheroukhov', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                        docker login -u $USERNAME -p $PASSWORD
+                        """
+                    }
                 }
             }
-        }
-    stage("docker push") {
-            steps {
-                echo " ============== start pushing image =================="
-                sh '''
-                docker push sheroukhov/mgf_app:${BUILD_NUMBER}
-                '''
-            }
+        stage("docker push") {
+                steps {
+                    echo " ============== start pushing image =================="
+                    sh '''
+                    docker push sheroukhov/mgf_app:${BUILD_NUMBER}
+                    '''
+                }
         }
     }
 }
