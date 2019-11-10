@@ -16,7 +16,6 @@ pipeline {
                 echo " ============== update build number in file =================="
                     sh "export BLD_NUMBER=${BUILD_NUMBER}"
                     sh "echo Nem build var ${BLD_NUMBER}"
-                }
             }
         }
         stage("create docker image") {
