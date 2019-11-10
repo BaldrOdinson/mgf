@@ -17,6 +17,7 @@ pipeline {
                 dir ('test_app/static/build_info') {
                   sh 'echo ${BUILD_NUMBER} > build_no.txt'
                 }
+            }
         }
         stage("create docker image") {
             steps {
