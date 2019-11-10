@@ -1,5 +1,7 @@
 FROM python:3.8
 
+ENV BLD_NUM
+
 RUN apt-get update && \
     # добавляем пользователя megafon
     useradd megafon && \

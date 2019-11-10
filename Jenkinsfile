@@ -11,14 +11,6 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("update jenkins build info for html") {
-            steps {
-                echo " ============== update build number in file =================="
-                    sh '''
-                      echo "${BUILD_NUMBER} > /home/jenkins/build_no.txt"
-                    '''
-            }
-        }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
