@@ -14,11 +14,9 @@ pipeline {
         stage("update jenkins build info for html") {
             steps {
                 echo " ============== update build number in file =================="
-                dir ('/home/ubuntu/build_info') {
                     sh '''
-                      echo "${BUILD_NUMBER} > build_no.txt"
+                      echo "${BUILD_NUMBER} > /home/ubuntu/build_no.txt"
                     '''
-                }
             }
         }
         stage("create docker image") {
