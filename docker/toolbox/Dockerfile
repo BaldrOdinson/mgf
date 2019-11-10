@@ -3,9 +3,9 @@ FROM python:3.8
 RUN apt-get update && \
     # добавляем пользователя megafon
     useradd megafon && \
-    usermod -aG sudo megafon && \
+    usermod -aG sudo megafon
 #    echo megafon:megafon1 | chpasswd && \
-    git clone https://github.com/BaldrOdinson/mgf.git /home/megafon/mgf
+#    git clone https://github.com/BaldrOdinson/mgf.git /home/megafon/mgf
 
 
 # устанавливаем модули Python
@@ -17,4 +17,3 @@ RUN pip3 install --no-cache-dir -r /home/megafon/mgf/requirements.txt && \
 EXPOSE 9000
 # запускаем gunicorn
 CMD gunicorn --bind 0.0.0.0:9000 --chdir /home/megafon/mgf wsgi
-
