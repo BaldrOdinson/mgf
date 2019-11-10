@@ -1,7 +1,5 @@
 FROM python:3.8
 
-ENV BLD_NUM
-
 RUN apt-get update && \
     # добавляем пользователя megafon
     useradd megafon && \
@@ -12,7 +10,7 @@ RUN apt-get update && \
 
 # устанавливаем модули Python
 RUN pip3 install --no-cache-dir -r /home/megafon/mgf/requirements.txt && \
-    ${BLD_NUM} > /home/megafon/mgf/test_app/core/build_info/build_no.txt && \
+    echo ${BLD_NUM} > /home/megafon/mgf/test_app/core/build_info/build_no.txt && \
     export LC_ALL=C.UTF-8 && \
     export LANG=C.UTF-8
 
